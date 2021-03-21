@@ -26,6 +26,11 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "jest-testing-cicd" #Must be unique in Heroku
           heroku_email: "lilia.manukyan@hotmail.com"
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        uses: anothrNick/github-tag-action@1.33.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: e2e tests
       #   uses: cypress-io/github-action@v2
       #   with:
